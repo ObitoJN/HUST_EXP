@@ -1,0 +1,12 @@
+气泡流水线：
+CLKs     IFPC      IDPC     EXPC     MPC      WBPC     PcErr     Werr     RegW  RDin         MemW  MDin         IFPCr     IDPCr    EXPCr    MPCr     WBPCr    RegWr RDinr        MemWr 	MDinr
+001a     002f4     02f0     0000     02ec     02e8     00000     0100     1     00000001     0     00000000     002f4     02f0     0000     02ec     02e8     1                       00000000     		0     		00000000    Error!
+
+解决方法：寄存器的时钟控制改为下跳沿
+
+重定向流水线：
+CLKs     IFPC      IDPC     EXPC     MPC      WBPC     PcErr     Werr     RegW  RDin         MemW  MDin         IFPCr     IDPCr    EXPCr    MPCr     WBPCr    RegWr RDinr        MemWr MDinr
+0344     031e0     31dc     31d8     31d4     31d0     00000     0001     1     00000000     1     ffffffff     001e0     01dc     01d8     01d4     01d0     1     00000000     1     00000006    Error!
+
+解决方法：
+rs2处连接错误
